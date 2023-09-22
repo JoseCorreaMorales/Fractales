@@ -1,16 +1,38 @@
 function setup() {
-  let canvas = createCanvas((windowWidth / 2), (windowHeight / 2));
+  //let canvas = createCanvas((windowWidth / 2), (windowHeight / 2));
+  let canvas = createCanvas(800, 600);
   canvas.parent('sketch-holder');
 }
 
 function draw() {
-  //background(220);
-  if (mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
+  background(0);
+  stroke(255);
+  strokeWeight(4);
+
+  translate(200, 400);
+  branch(100);
+
+}
+
+function branch(len) {
+  const angle = PI / 8;
+
+  if (len < 2) {
+    return;
   }
-  ellipse(mouseX, mouseY, 80, 80);
+
+  line(0, 0, 0, -len);
+  translate(0, -len);
+  push();
+
+  rotate(angle);
+  branch(len * 0.67);
+  pop();
+
+  push();
+  rotate(-angle);
+  branch(len * 0.67);
+  pop();
 }
 
 
