@@ -1,22 +1,29 @@
+let size = document.getElementById('size');
+let myAngle = document.getElementById('angle');
+
 function setup() {
   //let canvas = createCanvas((windowWidth / 2), (windowHeight / 2));
   let canvas = createCanvas(800, 600);
   canvas.parent('sketch-holder');
+
 }
 
 function draw() {
   background(0);
-  stroke(255);
+  stroke('#FF0080');
   strokeWeight(4);
 
-  translate(200, 400);
-  branch(100);
+  translate(380, 580);
+  branch(size.value);
+
+  
 
 }
 
 function branch(len) {
-  const angle = PI / 8;
+  const angle = PI / 4;
 
+  
   if (len < 2) {
     return;
   }
@@ -34,5 +41,6 @@ function branch(len) {
   branch(len * 0.67);
   pop();
 }
+
 
 
